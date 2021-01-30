@@ -43,7 +43,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+bindsym $mod+Ctrl+m exec alacritty -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 bindsym $mod+Shift+m exec pavucontrol
@@ -55,10 +55,10 @@ bindsym $mod+Shift+m exec pavucontrol
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+bindsym $mod+Ctrl+b exec alacritty -e 'bmenu'
 bindsym $mod+F2 exec firefox 
-bindsym $mod+F3 exec pcmanfm
-# bindsym $mod+F3 exec ranger
+bindsym $mod+F1 exec pcmanfm
+bindsym $mod+F3 exec alacritty -e ranger
 bindsym $mod+F4 exec gsimplecal
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 # bindsym $mod+F5 exec terminal -e 'mocp'
@@ -193,11 +193,13 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # exec --no-startup-id alacritty
 
-exec_always --no-startup-id "setxkbmap -layout us,ru"
-exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
+# exec_always --no-startup-id "setxkbmap -layout us,ru"
+# exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
 
-bindsym $mod+Shift+n exec "setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle'" 
+# bindsym $mod+Shift+n exec "setxkbmap -layout us,ru && setxkbmap -option 'grp:alt_shift_toggle'" 
 #exec_always "setxkbmap -model pc104 -layout us,ru,ua -variant ,, -option grp:alt_shift_toggle"
+
+exec_always tmux new-session -d -t default
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
